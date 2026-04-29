@@ -1,0 +1,86 @@
+#cart-karma-card {
+    position: fixed;
+    top: 80px;
+    right: 16px;
+    z-index: 2147483647;
+    width: 240px;
+    background: linear-gradient(160deg, #14532d 0%, #064e3b 100%);
+    color: #ecfccb;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 13px;
+    line-height: 1.45;
+    overflow: hidden;
+    animation: ckSlideIn 280ms ease-out;
+}
+@keyframes ckSlideIn {
+    from { transform: translateX(20px); opacity: 0; }
+    to   { transform: translateX(0); opacity: 1; }
+}
+#cart-karma-card .ck-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px 8px;
+    font-weight: 600;
+    font-size: 13px;
+}
+#cart-karma-card .ck-head .ck-title {
+    background: linear-gradient(90deg, #4ade80, #a3e635);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+#cart-karma-card .ck-close {
+    background: none; border: none; color: rgba(236,252,203,0.6);
+    cursor: pointer; font-size: 16px; line-height: 1; padding: 0 2px;
+}
+#cart-karma-card .ck-close:hover { color: #ecfccb; }
+#cart-karma-card .ck-sub {
+    padding: 0 12px 8px;
+    font-size: 11px;
+    color: rgba(236,252,203,0.65);
+}
+#cart-karma-card .ck-sub strong {
+    color: #d9f99d;
+    font-weight: 600;
+}
+#cart-karma-card .ck-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(0,0,0,0.25);
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+#cart-karma-card .ck-link {
+    display: block;
+    padding: 9px 10px;
+    background: rgba(0,0,0,0.10);
+    color: #ecfccb;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    transition: background 120ms;
+}
+#cart-karma-card .ck-link:hover {
+    background: rgba(74, 222, 128, 0.18);
+    color: #fff;
+}
+#cart-karma-card .ck-link:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    text-align: center;
+}
+#cart-karma-card .ck-foot {
+    padding: 7px 12px;
+    font-size: 10px;
+    color: rgba(236,252,203,0.5);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
+}
+#cart-karma-card .ck-foot a {
+    color: rgba(236,252,203,0.7);
+    text-decoration: none;
+}
+#cart-karma-card .ck-foot a:hover { color: #ecfccb; text-decoration: underline; }
