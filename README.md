@@ -20,7 +20,7 @@ A small companion to the [Cart Karma](https://samiprehn.github.io/cart-karma/) s
 - Shows a small green card top-right with one-click links to the same search on:
   - **Etsy** → `etsy.com/search?q=…`
   - **eBay** → `ebay.com/sch/i.html?_nkw=…`
-  - **Craigslist** → `sandiego.craigslist.org/search/sss?query=…` (defaults to SD; v2 will be configurable)
+  - **Craigslist** → `{region}.craigslist.org/search/sss?query=…` (defaults to `sandiego`; configurable via the toolbar popup)
   - **OfferUp** → `offerup.com/search?q=…`
 - Click ✕ to dismiss for the rest of the session on that domain. Closing/reopening the browser brings it back.
 - Card has a "Why?" link to the Cart Karma site.

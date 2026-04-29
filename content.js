@@ -31,6 +31,19 @@
     if (!cfg) return;
 
     let lastQuery = null;
+    let craigslistRegion = 'sandiego';
+
+    chrome.storage?.local.get('craigslistRegion').then(r => {
+        if (r.craigslistRegion) craigslistRegion = r.craigslistRegion;
+    }).catch(() => {});
+    chrome.storage?.onChanged.addListener((changes) => {
+        if (changes.craigslistRegion) {
+            craigslistRegion = changes.craigslistRegion.newValue || 'sandiego';
+            // Force re-render so the link updates immediately
+            lastQuery = null;
+            syncFromUrl();
+        }
+    });
 
     function escapeHTML(s) {
         return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -53,7 +66,7 @@
         return [
             { name: 'Etsy',        url: `https://www.etsy.com/search?q=${Q}` },
             { name: 'eBay',        url: `https://www.ebay.com/sch/i.html?_nkw=${Q}` },
-            { name: 'Craigslist',  url: `https://sandiego.craigslist.org/search/sss?query=${Q}` },
+            { name: 'Craigslist',  url: `https://${craigslistRegion}.craigslist.org/search/sss?query=${Q}` },
             { name: 'OfferUp',     url: `https://offerup.com/search?q=${Q}` },
             { name: 'FB Marketplace', url: `https://www.facebook.com/marketplace/search/?query=${Q}` },
         ];
