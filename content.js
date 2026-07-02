@@ -114,11 +114,16 @@
 
     syncFromUrl();
 
-    // SPA navigation hooks
-    const origPush = history.pushState;
-    const origReplace = history.replaceState;
-    history.pushState = function () { origPush.apply(this, arguments); setTimeout(syncFromUrl, 50); };
-    history.replaceState = function () { origReplace.apply(this, arguments); setTimeout(syncFromUrl, 50); };
+    // SPA navigation: content scripts run in an isolated world, so patching
+    // history.pushState/replaceState never sees the page's calls — poll the
+    // URL instead.
+    let lastHref = location.href;
+    setInterval(() => {
+        if (location.href !== lastHref) {
+            lastHref = location.href;
+            syncFromUrl();
+        }
+    }, 1000);
     window.addEventListener('popstate', () => setTimeout(syncFromUrl, 50));
     } catch (err) {
         console.error('[Cart Karma]', err);
